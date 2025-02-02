@@ -1,0 +1,48 @@
+@page
+@model Alquizar_StudentDashboard.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+    var students = new List<Student>
+    {
+        new Student { Name = "Alice", Score = 85 },
+        new Student { Name = "Bob", Score = 92 },
+        new Student { Name = "Charlie", Score = 78 },
+        new Student { Name = "Diana", Score = 88 }
+    };
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Welcome to the student dashboard. Below is the performance summary:</p>
+
+<!-- Conditional Example -->
+@if (students.Count == 0)
+{
+    <p>No students found.</p>
+}
+else
+{
+    <p>Total Students: @students.Count</p>
+
+    <!-- Loop Example -->
+    <ul>
+        @foreach (var student in students)
+        {
+            <li>
+                @student.Name - Score: @student.Score
+                @if (student.Score >= 90)
+                {
+                    <strong>(Excellent)</strong>
+                }
+                else if (student.Score >= 80)
+                {
+                    <em>(Good)</em>
+                }
+                else
+                {
+                    <span>(Needs Improvement)</span>
+                }
+            </li>
+        }
+    </ul>
+}
