@@ -4,12 +4,18 @@
     <projectFile profileName="http">Alquizar_StudentDashboard/Alquizar_StudentDashboard.csproj</projectFile>
     <projectFile profileName="https">Alquizar_StudentDashboard/Alquizar_StudentDashboard.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b59b605b-89ff-44e8-9c8f-14b5c72e04da" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738507798051</updated>
-      <workItem from="1738507801766" duration="322000" />
+      <workItem from="1738507801766" duration="1314000" />
     </task>
     <servers />
   </component>

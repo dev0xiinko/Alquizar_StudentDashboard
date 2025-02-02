@@ -29,3 +29,18 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+strong { color: #28a745; }  /* Green for Excellent */
+em { color: #ffc107; }      /* Yellow for Good */
+span { color: #dc3545; }    /* Red for Needs Improvement */
