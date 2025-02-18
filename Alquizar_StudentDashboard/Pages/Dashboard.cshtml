@@ -49,7 +49,9 @@ else
                         <tbody>
                             @foreach (var student in Model.StudentVM.Students)
                             {
-                                <tr>
+                                <tr class="@(student.Score >= 95 ? "table-success" : 
+                                           student.Score >= 85 ? "table-primary" :
+                                           student.Score >= 75 ? "table-info" : "table-danger")">
                                     <td>@student.Name</td>
                                     <td>@student.Score</td>
                                     <td>
