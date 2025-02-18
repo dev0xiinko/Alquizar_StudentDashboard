@@ -21,7 +21,13 @@ namespace Alquizar_StudentDashboard.Pages
             // Calculate remarks for each student
             foreach (var student in StudentVM.Students)
             {
-                student.Remarks = student.Score >= 75 ? "Passed" : "Failed";
+                student.Remarks = student.Score switch
+                {
+                    >= 95 => "Excellent",
+                    >= 85 => "Very Good",
+                    >= 75 => "Passed",
+                    _ => "Needs Improvement"
+                };
             }
 
             // Calculate average score

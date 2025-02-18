@@ -52,7 +52,13 @@ else
                                 <tr>
                                     <td>@student.Name</td>
                                     <td>@student.Score</td>
-                                    <td><span class="badge bg-@(student.Remarks == "Passed" ? "success" : "danger")">@student.Remarks</span></td>
+                                    <td>
+                                        <span class="badge bg-@(student.Score >= 95 ? "success" : 
+                                                               student.Score >= 85 ? "primary" :
+                                                               student.Score >= 75 ? "info" : "danger")">
+                                            @student.Remarks
+                                        </span>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
