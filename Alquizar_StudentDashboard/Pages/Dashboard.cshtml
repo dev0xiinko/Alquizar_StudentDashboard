@@ -1,17 +1,14 @@
 @page
-@model Alquizar_StudentDashboard.Pages.DashboardModel
+@model DashboardModel
 @{
     ViewData["Title"] = "Student Dashboard";
 }
 
-@* Ulohan sa dashboard *@
 <h1>@ViewData["Title"]</h1>
 
-@* Welcome message *@
 <p>Welcome to the student dashboard. Below is the performance summary:</p>
 
-@* I-check kung naay students *@
-@if (Model.StudentVM.Students is null || !Model.StudentVM.Students.Any())
+@if (!Model.StudentVM.Students.Any())
 {
     <p>No students found.</p>
 }
@@ -38,33 +35,26 @@ else
                     <h3 class="card-title">Student List</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Score</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var student in Model.StudentVM.Students)
-                            {
-                                <tr class="@(student.Score >= 95 ? "table-success" : 
-                                           student.Score >= 85 ? "table-primary" :
-                                           student.Score >= 75 ? "table-info" : "table-danger")">
-                                    <td>@student.Name</td>
-                                    <td>@student.Score</td>
-                                    <td>
-                                        <span class="badge bg-@(student.Score >= 95 ? "success" : 
-                                                               student.Score >= 85 ? "primary" :
-                                                               student.Score >= 75 ? "info" : "danger")">
-                                            @student.Remarks
-                                        </span>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    <ul class="list-group">
+                        @foreach (var student in Model.StudentVM.Students)
+                        {
+                            <li class="list-group-item">
+                                @student.Name - Score: @student.Score
+                                @if (student.Score >= 90)
+                                {
+                                    <strong class="text-success">(Excellent)</strong>
+                                }
+                                else if (student.Score >= 80)
+                                {
+                                    <em class="text-primary">(Good)</em>
+                                }
+                                else
+                                {
+                                    <span class="text-warning">(Needs Improvement)</span>
+                                }
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
