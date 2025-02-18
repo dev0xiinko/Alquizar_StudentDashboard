@@ -1,8 +1,11 @@
+// Magsugod ta sa atong web application
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Idugang ang mga services sa container
+// Ang Razor Pages kay importante ni para sa atong mga views
 builder.Services.AddRazorPages();
 
+// I-build na nato ang application
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

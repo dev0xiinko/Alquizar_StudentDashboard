@@ -4,10 +4,13 @@
     ViewData["Title"] = "Student Dashboard";
 }
 
+@* Ulohan sa dashboard *@
 <h1>@ViewData["Title"]</h1>
 
+@* Welcome message *@
 <p>Welcome to the student dashboard. Below is the performance summary:</p>
 
+@* I-check kung naay students *@
 @if (Model.StudentVM.Students is null || !Model.StudentVM.Students.Any())
 {
     <p>No students found.</p>
