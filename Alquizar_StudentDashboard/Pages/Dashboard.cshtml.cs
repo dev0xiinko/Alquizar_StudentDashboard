@@ -5,23 +5,27 @@ namespace Alquizar_StudentDashboard.Pages
 {
     public class DashboardModel : PageModel
     {
-        // Kini ang atong main view model para sa dashboard
         public StudentVM StudentVM { get; set; } = new StudentVM();
 
         public void OnGet()
         {
-            // Mag create ta ug sample nga mga estudyante
+            // Initialize student list
             StudentVM.Students = new List<Student>
             {
-                // Mga example nga estudyante with ilang scores
-                new Student { Name = "Alice", Score = 85, Remarks = string.Empty },
-                new Student { Name = "Bob", Score = 92, Remarks = string.Empty },
-                new Student { Name = "Charlie", Score = 78, Remarks = string.Empty },
-                new Student { Name = "Diana", Score = 88, Remarks = string.Empty }
+                new Student { Name = "Alice", Score = 85 },
+                new Student { Name = "Bob", Score = 92 },
+                new Student { Name = "Charlie", Score = 78 },
+                new Student { Name = "Diana", Score = 88 }
             };
 
-            // I-compute ang remarks sa matag estudyante
-            StudentVM.CalculateRemarks();
+            // Calculate remarks for each student
+            foreach (var student in StudentVM.Students)
+            {
+                student.Remarks = student.Score >= 75 ? "Passed" : "Failed";
+            }
+
+            // Calculate average score
+            StudentVM.Average = StudentVM.Students.Average(s => s.Score);
         }
     }
 }
