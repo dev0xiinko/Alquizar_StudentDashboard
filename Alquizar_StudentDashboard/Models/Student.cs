@@ -16,13 +16,7 @@ namespace Alquizar_StudentDashboard.Models
 
         public void CalculateRemarks()
         {
-            Remarks = Score switch
-            {
-                >= 95 => "Excellent",
-                >= 85 => "Very Good",
-                >= 75 => "Passed",
-                _ => "Failed"
-            };
+            Remarks = Score >= 75 ? "Passed" : "Failed";
         }
     }
 }
