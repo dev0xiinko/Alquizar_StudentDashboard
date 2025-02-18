@@ -14,19 +14,74 @@
 }
 else
 {
-    <p>Total Students: @Model.StudentVM.Students.Count</p>
-    <p>Average Score: @Model.StudentVM.Average.ToString("F2")</p>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="card-title">Class Statistics</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="alert alert-info">
+                        <h4>Total Students</h4>
+                        <p class="h2">@Model.StudentVM.Students.Count</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success">
+                        <h4>Class Average</h4>
+                        <p class="h2">@Model.StudentVM.Average.ToString("F2")</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-primary">
+                        <h4>Passing</h4>
+                        <p class="h2">@Model.StudentVM.PassingCount</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-warning">
+                        <h4>Needs Support</h4>
+                        <p class="h2">@Model.StudentVM.FailingCount</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        @foreach (var student in Model.StudentVM.Students)
-        {
-            <li style="@(student.Score > 90 ? "background-color: lightgreen;" : "")">
-                @student.Name - Score: @student.Score
-                <span class="@(student.Remarks == "Excellent" ? "fw-bold" : 
-                              student.Remarks == "Good" ? "fst-italic" : "")">
-                    (@student.Remarks)
-                </span>
-            </li>
-        }
-    </ul>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Student List</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var student in Model.StudentVM.Students)
+                        {
+                            <tr class="@(student.Score >= 95 ? "table-success" : 
+                                        student.Score >= 85 ? "table-info" :
+                                        student.Score >= 75 ? "table-primary" : "table-warning")">
+                                <td>@student.Name</td>
+                                <td>@student.Score</td>
+                                <td>
+                                    <span class="badge @(student.Score >= 95 ? "bg-success" :
+                                                       student.Score >= 85 ? "bg-info" :
+                                                       student.Score >= 75 ? "bg-primary" : "bg-warning")">
+                                        @student.Remarks
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 }

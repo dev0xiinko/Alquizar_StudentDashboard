@@ -18,14 +18,9 @@ namespace Alquizar_StudentDashboard.Pages
                 new Student { Name = "Diana", Score = 88, Remarks = string.Empty }
             };
 
-            // Calculate average
-            StudentVM.Average = StudentVM.Students.Average(s => s.Score);
-
-            // Calculate remarks for each student
-            foreach (var student in StudentVM.Students)
-            {
-                student.CalculateRemarks();
-            }
+            // Calculate statistics
+            StudentVM.CalculateAverage();
+            StudentVM.CalculateAllRemarks();
         }
     }
 }

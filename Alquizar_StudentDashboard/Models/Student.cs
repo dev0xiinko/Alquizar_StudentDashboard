@@ -18,6 +18,8 @@ namespace Alquizar_StudentDashboard.Models
         {
             Remarks = Score switch
             {
+                >= 95 => "Excellent",
+                >= 85 => "Very Good",
                 >= 75 => "Passed",
                 _ => "Failed"
             };
