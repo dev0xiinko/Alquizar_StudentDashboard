@@ -3,7 +3,7 @@ namespace Alquizar_StudentDashboard.Models
     public class StudentVM
     {
         public List<Student> Students { get; set; } = new List<Student>();
-        public double Average { get; private set; }
+        public double Average { get; set; }
         public int PassingCount => Students.Count(s => s.Score >= 75);
         public int FailingCount => Students.Count(s => s.Score < 75);
 
