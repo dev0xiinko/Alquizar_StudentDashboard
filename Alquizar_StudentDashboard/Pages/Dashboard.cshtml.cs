@@ -21,15 +21,10 @@ namespace Alquizar_StudentDashboard.Pages
             // Calculate average
             StudentVM.Average = StudentVM.Students.Average(s => s.Score);
 
-            // Set remarks for each student
+            // Calculate remarks for each student
             foreach (var student in StudentVM.Students)
             {
-                student.Remarks = student.Score switch
-                {
-                    >= 90 => "Excellent",
-                    >= 80 => "Good",
-                    _ => "Needs Improvement"
-                };
+                student.CalculateRemarks();
             }
         }
     }
