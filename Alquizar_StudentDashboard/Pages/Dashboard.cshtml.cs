@@ -12,10 +12,10 @@ namespace Alquizar_StudentDashboard.Pages
             // Initialize student list
             StudentVM.Students = new List<Student>
             {
-                new Student { Name = "Alice", Score = 85 },
-                new Student { Name = "Bob", Score = 92 },
-                new Student { Name = "Charlie", Score = 78 },
-                new Student { Name = "Diana", Score = 88 }
+                new Student { Name = "Alice", Score = 85, Remarks = string.Empty },
+                new Student { Name = "Bob", Score = 92, Remarks = string.Empty },
+                new Student { Name = "Charlie", Score = 78, Remarks = string.Empty },
+                new Student { Name = "Diana", Score = 88, Remarks = string.Empty }
             };
 
             // Calculate average
