@@ -2,54 +2,30 @@
 @model Alquizar_StudentDashboard.Pages.DashboardModel
 @{
     ViewData["Title"] = "Student Dashboard";
-
-    // listahan sa mga example students
-    var students = new List<Student>
-    {
-        new Student { Name = "Alice", Score = 85 },
-        new Student { Name = "Bob", Score = 92 },
-        new Student { Name = "Charlie", Score = 78 },
-        new Student { Name = "Diana", Score = 88 }
-    };
-
-    // icalculate ang average score
-    var averageScore = students.Average(s => s.Score);
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <p>Welcome to the student dashboard. Below is the performance summary:</p>
 
-<!-- if else condition kung walay student-->
-@if (students.Count == 0)
+@if (!Model.StudentVM.Students?.Any() ?? true)
 {
     <p>No students found.</p>
 }
 else
 {
-    <p>Total Students: @students.Count</p>
-    <p>Average Score: @averageScore</p> <!-- idisplay ang average score -->
+    <p>Total Students: @Model.StudentVM.Students.Count</p>
+    <p>Average Score: @Model.StudentVM.Average.ToString("F2")</p>
 
-    <!-- iloop ang mga students -->
     <ul>
-        @foreach (var student in students)
+        @foreach (var student in Model.StudentVM.Students)
         {
             <li style="@(student.Score > 90 ? "background-color: lightgreen;" : "")">
                 @student.Name - Score: @student.Score
-
-                <!-- condition base sa score -->
-                @if (student.Score >= 90)
-                {
-                    <strong>(Excellent)</strong> <!-- excellent nga score -->
-                }
-                else if (student.Score >= 80)
-                {
-                    <em>(Good)</em> <!-- good nga score -->
-                }
-                else
-                {
-                    <span>(Needs Improvement)</span> <!-- need ug improvement -->
-                }
+                <span class="@(student.Remarks == "Excellent" ? "fw-bold" : 
+                              student.Remarks == "Good" ? "fst-italic" : "")">
+                    (@student.Remarks)
+                </span>
             </li>
         }
     </ul>
